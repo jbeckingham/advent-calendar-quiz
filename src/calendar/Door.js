@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Modal, Input, Header, Form } from "semantic-ui-react";
-import "./App.css";
 
 const exampleReducer = (state, action) => {
     switch (action.type) {
