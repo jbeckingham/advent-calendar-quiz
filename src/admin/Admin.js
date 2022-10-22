@@ -45,7 +45,7 @@ const Admin = () => {
     };
 
     return (
-        <div class="admin">
+        <div className="admin">
             {id ? (
                 <>
                     {correctPassword ? (

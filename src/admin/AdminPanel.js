@@ -3,6 +3,7 @@ import { Grid, Button } from "semantic-ui-react";
 import Snowflakes from "magic-snowflakes";
 import ChangePassword from "./ChangePassword";
 import Players from "./Players";
+import Configure from "./Configure";
 
 const snowflakes = new Snowflakes({ color: "white", speed: 2 });
 snowflakes.start();
@@ -28,7 +29,7 @@ const AdminPanel = ({ id, password, onPasswordUpdateSuccess }) => {
                         <Players id={id} password={password} />
                     </Grid.Row>
                     <Grid.Row>
-                        <Button className="admin-button">Configure quiz</Button>
+                        <Configure id={id} password={password} />
                     </Grid.Row>
                 </Grid.Column>
             </Grid>

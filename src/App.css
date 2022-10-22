@@ -27,3 +27,8 @@ button.ui.admin-button {
     width: 200px;
     margin: 10px;
 }
+
+.warning {
+    color: red;
+    margin: 10px 0px;
+}
