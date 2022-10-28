@@ -4,6 +4,7 @@ import Snowflakes from "magic-snowflakes";
 import ChangePassword from "./ChangePassword";
 import Players from "./Players";
 import Configure from "./Configure";
+import Instructions from "./Instructions";
 
 const snowflakes = new Snowflakes({ color: "white", speed: 2 });
 snowflakes.start();
@@ -27,6 +28,9 @@ const AdminPanel = ({ id, password, onPasswordUpdateSuccess }) => {
                     </Grid.Row>
                     <Grid.Row>
                         <Players id={id} password={password} />
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Instructions />
                     </Grid.Row>
                     <Grid.Row>
                         <Configure id={id} password={password} />

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Calendar from "./Calendar";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { partition, propEq, sortBy, prop, pipe } from "ramda";
 
 const Home = () => {
     const { id, key } = useParams();
@@ -58,12 +59,28 @@ const Home = () => {
                 .where("url", "==", key);
             const data = await response.get();
             const retrievedName = data.docs[0].data().name;
-            console.log("retrievedName", retrievedName);
             if (!retrievedName) {
             } else {
                 setName(data.docs[0].data().name);
                 getAnswers(data.docs[0].data().name);
             }
+        };
+
+        const setMissingDays = (questions) => {
+            const takenDays = questions.map((i) => i.day);
+            const nonAssignedDays = [...Array(24).keys()]
+                .map((x, i) => i + 1)
+                .filter((i) => !takenDays.includes(i));
+            const [incomplete, complete] = partition(
+                propEq("day", 0),
+                questions
+            );
+            const toAdd = incomplete.map((q, n) => ({
+                ...q,
+                day: nonAssignedDays[n],
+            }));
+            const result = sortBy(prop("door"), complete.concat(toAdd));
+            return result;
         };
 
         const getQuestions = async () => {
@@ -73,7 +90,8 @@ const Home = () => {
                 .orderBy("door", "asc");
             const data = await response.get();
             const resultsArray = data.docs.map((doc) => doc.data());
-            setQuestions(resultsArray);
+            const finalResults = setMissingDays(resultsArray);
+            setQuestions(finalResults);
         };
         getUserData();
         getQuestions();

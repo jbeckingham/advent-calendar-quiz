@@ -91,6 +91,7 @@ function QuestionConfig({ data, onQuestionSave, dayOptions }) {
                         rows={2}
                         onChange={onQuestionChange}
                         defaultValue={data.question}
+                        placeholder="Question"
                     />
                 </Form>
             </Grid.Column>
@@ -99,6 +100,7 @@ function QuestionConfig({ data, onQuestionSave, dayOptions }) {
                     disabled={disableFields}
                     onChange={onAnswerChange}
                     defaultValue={data.answer}
+                    placeholder="Answer"
                 ></Input>
             </Grid.Column>
             <Grid.Column width={2} style={{ padding: 0 }}>

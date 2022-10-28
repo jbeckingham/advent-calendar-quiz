@@ -68,7 +68,7 @@ function Players({ id, password }) {
             <Modal.Header>Manage Players</Modal.Header>
             <Modal.Content>
                 <Modal.Description>
-                    <Grid>
+                    <Grid doubling columns={4}>
                         <Grid.Row>
                             <Grid.Column width={4}>
                                 <Header>Name</Header>
@@ -76,7 +76,6 @@ function Players({ id, password }) {
                             <Grid.Column width={8}>
                                 <Header>Url</Header>
                             </Grid.Column>
-                            <Grid.Column width={3}></Grid.Column>
                         </Grid.Row>
                         {playerData.map((player, i) => (
                             <PlayerConfig

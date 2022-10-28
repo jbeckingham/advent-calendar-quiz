@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input, Grid, Icon } from "semantic-ui-react";
+import PlayerLink from "./PlayerLink";
 
 function PlayerConfig({ player, onPlayerSave, onRemovePlayer }) {
     const [name, setName] = useState(player.name);
@@ -45,12 +46,15 @@ function PlayerConfig({ player, onPlayerSave, onRemovePlayer }) {
                     defaultValue={player.name}
                 ></Input>
             </Grid.Column>
-            <Grid.Column width={8} style={{ padding: 0 }}>
+            <Grid.Column width={7}>
                 <Input
                     style={{ width: "100%" }}
                     onChange={onUrlChange}
                     defaultValue={player.url}
                 ></Input>
+            </Grid.Column>
+            <Grid.Column width={2}>
+                <PlayerLink url={player.url} />
             </Grid.Column>
             <Grid.Column width={3}>
                 {showButton ? (

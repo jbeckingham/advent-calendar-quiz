@@ -53,7 +53,7 @@ function Configure({ id, password }) {
         <div className="warning">
             <p>
                 You currently have not assigned all days. All doors without a
-                day assigned will become available on the 1st of December.
+                day assigned will get assigned one from the days not assigned.
             </p>
         </div>
     );
@@ -67,24 +67,28 @@ function Configure({ id, password }) {
         >
             <Modal.Header>Configure Quiz</Modal.Header>
             <Modal.Content>
+                <p>Remember, the door ordering on the left corresponds to the door position, left to right, top to bottom, not day of December. 
+                    The day of the month door will be available can be set in the right hand column.</p>
                 {dayOptions.length > 0 && <DayWarning />}
                 <Modal.Description>
-                    <Grid columns={5}>
+                    <Grid>
                         <Grid.Row>
-                            <Grid.Column width={1}>
+                            <Grid.Column mobile={4} tablet={1} computer={1}>
                                 <Header>Door</Header>
                             </Grid.Column>
-                            <Grid.Column width={7}>
+                            <Grid.Column mobile={4} tablet={7} computer={7}>
                                 <Header>Question</Header>
                             </Grid.Column>
-                            <Grid.Column width={4}>
+                            <Grid.Column mobile={4} tablet={4} computer={4}>
                                 <Header>Answer</Header>
                             </Grid.Column>
-                            <Grid.Column width={2}>
+                            <Grid.Column mobile={4} tablet={2} computer={2}>
                                 <Header>Day</Header>
                             </Grid.Column>
-                            <Grid.Column width={2}></Grid.Column>
+                            {/* <Grid.Column mobile={4} tablet={4} computer={2}></Grid.Column> */}
                         </Grid.Row>
+                    </Grid>
+                    <Grid columns="equal" stackable>
                         {calendarData.map((data, i) => (
                             <QuestionConfig
                                 data={data}

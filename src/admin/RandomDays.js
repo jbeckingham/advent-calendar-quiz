@@ -55,43 +55,48 @@ function ChangePassword({ id, password, onPasswordUpdateSuccess }) {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button className="admin-button">Change Password</Button>}
-            size="tiny"
+            trigger={<Button className="admin-button">Randomize Days</Button>}
+            dimmer="blurring"
+            size="small"
         >
-            <Modal.Header>Change Password</Modal.Header>
-            <Modal.Content>
-                <Modal.Description>
-                    <Input
-                        onChange={onChange}
-                        autoFocus
-                        placeholder="New Password"
+            <Modal.Header>Are you sure?</Modal.Header>
+            <Form onSubmit={onSubmit}>
+                <Modal.Content image>
+                    <Modal.Description>
+                        <Form.Field>
+                            <Input
+                                style={{ margin: "15px", width: "80%" }}
+                                onChange={onChange}
+                                autoFocus
+                                placeholder="New Password"
+                            />
+                        </Form.Field>
+                        <p
+                            style={{
+                                margin: "15px",
+                                width: "80%",
+                                color: messageColour,
+                                height: "10px",
+                            }}
+                        >
+                            {message}
+                        </p>
+                    </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button
+                        content="Submit password change"
+                        labelPosition="right"
+                        icon="checkmark"
+                        type="submit"
+                        color="green"
+                        loading={loading}
                     />
-                    <p
-                        style={{
-                            margin: "15px",
-                            width: "80%",
-                            color: messageColour,
-                            height: "10px",
-                        }}
-                    >
-                        {message}
-                    </p>
-                </Modal.Description>
-            </Modal.Content>
-            <Modal.Actions>
-                <Button
-                    content="Submit password change"
-                    labelPosition="right"
-                    icon="checkmark"
-                    type="submit"
-                    color="green"
-                    loading={loading}
-                    onClick={onSubmit}
-                />
-                <Button color="grey" onClick={() => setOpen(false)}>
-                    Close
-                </Button>
-            </Modal.Actions>
+                    <Button color="grey" onClick={() => setOpen(false)}>
+                        Close
+                    </Button>
+                </Modal.Actions>
+            </Form>
         </Modal>
     );
 }
