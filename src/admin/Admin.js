@@ -6,9 +6,7 @@ import AdminPanel from "./AdminPanel.js";
 import {
     getFunctions,
     httpsCallable,
-    connectFunctionsEmulator,
 } from "firebase/functions";
-import { getApp } from "firebase/app";
 
 // Below for local firebase functions
 // const functions = getFunctions(getApp());
